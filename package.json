@@ -5,7 +5,8 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app/api.js"
+    "start": "nodemon app/api.js",
+    "pm2": "pm2 start app/api.js --watch"
   },
   "author": "",
   "license": "ISC",
