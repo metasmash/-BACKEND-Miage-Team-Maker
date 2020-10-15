@@ -1,3 +1,7 @@
-const API_KEY = 'RGAPI-c00dad77-0234-44ee-9ddf-a8451678cec8'
+
+const db = require('./schema/models')
+
+const API_KEY = async () => await db.serverConfig.findOne({type:'APIKEY'})
+
 
 module.exports = API_KEY

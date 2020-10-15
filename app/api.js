@@ -1,6 +1,12 @@
 const RIOT = require('./riotGamesHelper')
 const app = require('../index')
 const db = require('./schema/models')
+const API_KEY = require('./apikey')
+
+
+app.get('/',async (req,res,err) => {
+
+})
 
 app.get('/:username/level', async (req, res) => {
   const response = { information: {} }
@@ -30,6 +36,15 @@ app.get('/:username/information', async (req, res) => {
   res.json(response.information)
 })
 
+app.get('/serverConfiguration/apikey', async (req,res) => {
+  try {
+ const {riotKey} = await API_KEY()
+ res.json(riotKey)
+  } catch (err) {
+ res.json({error:0})
+  }
+})
+
 app.post(
   '/serverConfiguration/apikey',
   async (req, res, next) => {
@@ -43,8 +58,8 @@ app.post(
       console.log('Error: table already exists')
       console.log(key)
 
-     await db.serverConfig.updateOne({type:'APIKEY'}, {riotKey:'lol'})
-      res.json({ error: 'Table updated' })
+     await db.serverConfig.updateOne({type:'APIKEY'}, {riotKey:key})
+      res.json({ Message: 'Table updated', exit:0 })
     }
   },
   async (req, res) => {
@@ -58,10 +73,8 @@ app.post(
       })
       .catch(() => console.log('we got an error captain!'))
 
-    db.serverConfig.find({}).then((res) => {
-      console.log(res)
-    })
+      console.log('DB APIKEY created successfully!')
 
-    res.send(await db.serverConfig.find({}))
+    res.send({Message:'Table created successfully',exit:0})
   }
 )
