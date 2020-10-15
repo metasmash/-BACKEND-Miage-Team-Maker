@@ -32,30 +32,34 @@ app.get('/:username/information', async (req, res) => {
 
 app.post(
   '/serverConfiguration/apikey',
-  async (req, res) => {
+  async (req, res, next) => {
     const apiKey = await db.serverConfig.find({})
     const length = apiKey.length
+    const {key} = req.body
     if (length === 0) {
+      console.log('success on middleware call')
       next()
     } else {
       console.log('Error: table already exists')
-      res.json({ error: true })
+      console.log(key)
+
+     await db.serverConfig.updateOne({type:'APIKEY'}, {riotKey:'lol'})
+      res.json({ error: 'Table updated' })
     }
   },
   async (req, res) => {
     const { body } = req
     console.log(await db.serverConfig.find({}))
-    console.log(body)
 
     db.serverConfig
-      .create({ riotKey: 'hello world' })
+      .create({type:'APIKEY', riotKey: '__define.api.key' })
       .then(() => {
         console.log('table created successfully!')
       })
       .catch(() => console.log('we got an error captain!'))
 
     db.serverConfig.find({}).then((res) => {
-      console.log()
+      console.log(res)
     })
 
     res.send(await db.serverConfig.find({}))
