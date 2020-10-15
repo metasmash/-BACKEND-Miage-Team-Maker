@@ -36,6 +36,7 @@ app.get('/:username/information', async (req, res) => {
 })
 
 app.get('/serverConfiguration/apikey', async (req,res) => {
+    res.json({Error:"You dont have access right to this."})
   try {
  const riotKey = await API_KEY()
  res.json(riotKey)
