@@ -12,8 +12,7 @@ app.get('/:username/level', async (req, res) => {
   const response = { information: {} }
   try {
     const username = req.params.username
-    const information = await RIOT.getSummonerLevel(username)
-    response.information = information
+      response.information = await RIOT.getSummonerLevel(username)
   } catch (e) {
     response.information = { error: true }
     console.log('Error: invalid summoner name.')
@@ -38,7 +37,7 @@ app.get('/:username/information', async (req, res) => {
 
 app.get('/serverConfiguration/apikey', async (req,res) => {
   try {
- const {riotKey} = await API_KEY()
+ const riotKey = await API_KEY()
  res.json(riotKey)
   } catch (err) {
  res.json({error:0})
