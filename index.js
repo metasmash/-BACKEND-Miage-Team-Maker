@@ -16,7 +16,7 @@ mongo.once('open', function () {
 })
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://miage-tournament.tk',
 }
 
 app.use(cors(corsOptions))
