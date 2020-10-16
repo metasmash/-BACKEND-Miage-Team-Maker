@@ -36,11 +36,17 @@ const RIOT = {
             .then((res) => {
                 return res.data
             }),
-    checkApiKey: async (apiKey) => {
-        const response = await axios.get(
-            `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${await API_KEY()}`
-        )
-    },
+    checkApiKey: async (apiKey) =>
+        await axios
+            .get(
+                `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/siniiful?api_key=${apiKey}`
+            )
+            .then((res) => {
+                return res.status
+            })
+            .catch((err) => {
+                return 403
+            }),
 }
 
 module.exports = RIOT

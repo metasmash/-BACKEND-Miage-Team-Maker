@@ -45,6 +45,21 @@ app.get('/serverConfiguration/apikey', async (req, res) => {
 app.post(
     '/serverConfiguration/apikey',
     async (req, res, next) => {
+        const { key } = req.body
+        RIOT.checkApiKey(key)
+            .then((res) => {
+                if (res === 200) {
+                    next()
+                } else {
+                    throw 'error, api key not valid!'
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+                res.json({ status: 403 })
+            })
+    },
+    async (req, res, next) => {
         const apiKey = await db.serverConfig.find({})
         const length = apiKey.length
         const { key } = req.body
