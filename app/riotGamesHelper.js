@@ -45,6 +45,7 @@ const RIOT = {
                 return res.status
             })
             .catch((err) => {
+                console.log(err)
                 return 403
             }),
 }
