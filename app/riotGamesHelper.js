@@ -44,8 +44,7 @@ const RIOT = {
             .then((res) => {
                 return res.status
             })
-            .catch((err) => {
-                console.log(err)
+            .catch(() => {
                 return 403
             }),
 }

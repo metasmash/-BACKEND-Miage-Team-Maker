@@ -3,7 +3,7 @@ const MIDDLEWARE = require('./middleware/index')
 const CONTROLLER = require('./actionController/index')
 const ROUTES = require('./routes')
 
-app.get(ROUTES.ROOT, async (req, res, err) => {
+app.get(ROUTES.ROOT, async (req, res) => {
     res.json(ROUTES)
 })
 
@@ -16,6 +16,13 @@ app.get(ROUTES.RIOT_API_KEY, CONTROLLER.GET_RIOT_API_KEY)
 app.post(
     ROUTES.RIOT_API_KEY,
     MIDDLEWARE.CHECK_RIOT_KEY,
-    MIDDLEWARE.UPDATE_RIOT_KEY,
-    CONTROLLER.CREATE_DB_RIOT_KEY
+    MIDDLEWARE.CREATE_DB_RIOT_KEY,
+    CONTROLLER.SET_RIOT_KEY
+)
+
+app.post(
+    ROUTES.SIGNUP,
+    MIDDLEWARE.CHECK_USERNAME_AVAILABILITY,
+    MIDDLEWARE.CHECK_EMAIL_AVAILABILITY,
+    CONTROLLER.SIGNUP
 )
