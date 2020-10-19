@@ -1,5 +1,5 @@
 const createDBRiotKey = require('./createDBRiotKey')
-const getUserInformation = require('./createDBRiotKey')
+const getUserInformation = require('./getUserInformation')
 const getRiotApiKey = require('./getRiotApiKey')
 const getUserLevel = require('./getUserLevel')
 
