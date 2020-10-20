@@ -1,4 +1,4 @@
-const app = require('../index')
+const app = require('../server')
 const MIDDLEWARE = require('./middleware/index')
 const CONTROLLER = require('./actionController/index')
 const ROUTES = require('./routes')
