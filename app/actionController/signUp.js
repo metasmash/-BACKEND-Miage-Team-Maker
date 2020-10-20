@@ -1,5 +1,5 @@
 const db = require('../schema/models')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const salt = 10
 
 module.exports = async (req, res) => {
