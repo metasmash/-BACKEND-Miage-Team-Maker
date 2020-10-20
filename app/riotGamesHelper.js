@@ -8,12 +8,9 @@ const RIOT = {
             .get(
                 `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${await API_KEY()}`
             )
-            .then((res) => {
-                const { data } = res
-                return {
-                    name: data.name,
-                    level: data.summonerLevel,
-                }
+            .then(async (res) => {
+                const { data } = await res
+                return { ...data }
             }),
     //to get the secret summonerID for more riot game api request
     getSummonerSecretId: async (summonerName) =>
