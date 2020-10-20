@@ -6,11 +6,8 @@ const ROUTES = require('./routes')
 app.get(ROUTES.ROOT, async (req, res) => {
     res.json(ROUTES)
 })
-
 app.get(ROUTES.USER_LEVEL, CONTROLLER.GET_USER_LEVEL)
-
 app.get(ROUTES.USER_INFORMATION, CONTROLLER.GET_USER_INFORMATION)
-
 app.get(ROUTES.RIOT_API_KEY, CONTROLLER.GET_RIOT_API_KEY)
 
 app.post(
