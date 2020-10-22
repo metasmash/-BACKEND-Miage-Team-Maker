@@ -3,10 +3,11 @@ const db = require('../../schema/models')
 
 module.exports = async (req, res) => {
     const { token } = await req.params
-    console.log(token)
-    console.log(await db.user.findOne({ token }))
-    await jwt.verify(token, 'shhhhh', function (err, decoded) {
+    const user = await db.user.findOne({ token })
+
+    await jwt.verify(token, 'shhhhh', async (err, decoded) => {
         console.log(decoded)
+        res.json({ decoded })
         if (err) {
             /*
               err = {
@@ -17,6 +18,4 @@ module.exports = async (req, res) => {
             */
         }
     })
-
-    res.json({ status: 0 })
 }
