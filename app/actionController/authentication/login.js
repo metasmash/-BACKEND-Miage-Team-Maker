@@ -12,7 +12,10 @@ module.exports = async (req, res) => {
             console.log(!!token)
 
             if (!!token) {
-                res.json({ message: `Hello, ${username}, you are logged in!` })
+                res.json({
+                    message: `Hello, ${username}, you are logged in!`,
+                    token,
+                })
             } else {
                 const token = await jwt.sign(
                     {
@@ -25,7 +28,10 @@ module.exports = async (req, res) => {
                 console.log(token)
                 await db.user.updateOne({ username }, { token })
 
-                res.json({ token })
+                res.json({
+                    message: `Hello, ${username}, you are logged in!`,
+                    token,
+                })
             }
         } else {
             res.json({ message: 'User does not exists or password is wrong.' })
