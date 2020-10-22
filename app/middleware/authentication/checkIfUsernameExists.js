@@ -1,4 +1,4 @@
-const db = require('../schema/models')
+const db = require('../../schema/models')
 
 module.exports = async (req, res, next) => {
     const { username } = req.body

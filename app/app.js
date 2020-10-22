@@ -1,6 +1,6 @@
 const app = require('../server')
-const MIDDLEWARE = require('./middleware/index')
-const CONTROLLER = require('./actionController/index')
+const MIDDLEWARE = require('./middleware')
+const CONTROLLER = require('./actionController')
 const ROUTES = require('./routes')
 
 app.get(ROUTES.ROOT, async (req, res) => {
@@ -23,5 +23,7 @@ app.post(
     MIDDLEWARE.CHECK_EMAIL_AVAILABILITY,
     CONTROLLER.SIGNUP
 )
+
+app.post(ROUTES.LOGIN_TOKEN, CONTROLLER.TOKEN_AUTH)
 
 app.post(ROUTES.LOGIN, MIDDLEWARE.CHECK_IF_USERNAME_EXISTS, CONTROLLER.LOGIN)

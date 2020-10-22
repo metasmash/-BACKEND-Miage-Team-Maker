@@ -1,15 +1,9 @@
-const setRiotKey = require('./updateRiotKey')
-const getUserInformation = require('./getUserInformation')
-const getRiotApiKey = require('./getRiotApiKey')
-const getUserLevel = require('./getUserLevel')
-const signUp = require('./signUp')
-const login = require('./login')
-
 module.exports = {
-    SET_RIOT_KEY: setRiotKey,
-    GET_USER_INFORMATION: getUserInformation,
-    GET_RIOT_API_KEY: getRiotApiKey,
-    GET_USER_LEVEL: getUserLevel,
-    SIGNUP: signUp,
-    LOGIN: login,
+    SET_RIOT_KEY: require('./updateRiotKey'),
+    GET_USER_INFORMATION: require('./getUserInformation'),
+    GET_RIOT_API_KEY: require('./getRiotApiKey'),
+    GET_USER_LEVEL: require('./getUserLevel'),
+    SIGNUP: require('./authentication/signUp'),
+    LOGIN: require('./authentication/login'),
+    TOKEN_AUTH: require('./authentication/tokenAuthentication'),
 }

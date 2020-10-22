@@ -1,4 +1,4 @@
-const db = require('../schema/models')
+const db = require('../../schema/models')
 const bcrypt = require('bcryptjs')
 const salt = 10
 

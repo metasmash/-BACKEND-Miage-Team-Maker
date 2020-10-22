@@ -5,4 +5,5 @@ module.exports = {
     RIOT_API_KEY: '/serverConfiguration/apikey',
     SIGNUP: '/signup',
     LOGIN: '/login',
+    LOGIN_TOKEN: '/login/:token',
 }

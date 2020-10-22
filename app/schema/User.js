@@ -16,6 +16,12 @@ const User = new Schema({
         type: String,
         required: true,
     },
+    token: {
+        type: String,
+    },
+    role: {
+        type: String,
+    },
 })
 
 module.exports = mongoose.model('user', User)
