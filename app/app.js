@@ -3,6 +3,11 @@ const MIDDLEWARE = require('./middleware')
 const CONTROLLER = require('./actionController')
 const ROUTES = require('./routes')
 
+// middleware for user rights:
+app.use(ROUTES.ROLE.USER, MIDDLEWARE.IS_USER)
+app.use(ROUTES.ROLE.MODERATOR, MIDDLEWARE.IS_MODERATOR)
+app.use(ROUTES.ROLE.ADMIN, MIDDLEWARE.IS_ADMIN)
+
 app.get(ROUTES.ROOT, async (req, res) => {
     res.json(ROUTES)
 })
