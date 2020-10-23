@@ -8,8 +8,7 @@ module.exports = async (req, res) => {
 
     bcrypt.compare(password, hash, async (err, result) => {
         if (result) {
-            const { token } = await db.user.findOne({ username })
-            console.log(!!token)
+            const { token, role } = await db.user.findOne({ username })
 
             if (!!token) {
                 res.json({
@@ -19,7 +18,7 @@ module.exports = async (req, res) => {
             } else {
                 const token = await jwt.sign(
                     {
-                        data: 'success',
+                        role,
                     },
                     'shhhhh',
                     { expiresIn: '7d' }
