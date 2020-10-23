@@ -23,6 +23,9 @@ const User = new Schema({
         type: String,
         default: 'User',
     },
+    lowerUsername: {
+        type: String,
+    },
 })
 
 module.exports = mongoose.model('user', User)

@@ -1,9 +1,11 @@
 const db = require('../../schema/models')
+const _ = require('lodash')
 
 module.exports = async (req, res, next) => {
     const { username } = req.body
+    const lowerUsername = _.toLower(username)
 
-    const userExists = !!(await db.user.find({ username: username })).length
+    const userExists = !!(await db.user.find({ lowerUsername })).length
 
     if (userExists) {
         next()

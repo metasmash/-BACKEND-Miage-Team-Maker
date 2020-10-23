@@ -1,14 +1,19 @@
 const db = require('../../schema/models')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const _ = require('lodash')
 
 module.exports = async (req, res) => {
     const { username, password } = req.body
-    const hash = (await db.user.findOne({ username })).password
+    const lowerUsername = _.toLower(username)
+
+    const hash = (await db.user.findOne({ lowerUsername })).password
 
     bcrypt.compare(password, hash, async (err, result) => {
         if (result) {
-            const { token, role } = await db.user.findOne({ username })
+            const { username, token, role } = await db.user.findOne({
+                lowerUsername,
+            })
 
             if (!!token) {
                 await jwt.verify(token, 'shhhhh', async (err, decoded) => {
