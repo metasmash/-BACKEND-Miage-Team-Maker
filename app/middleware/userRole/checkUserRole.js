@@ -12,15 +12,15 @@ module.exports = async (req, res, next) => {
             if (role === expectedRole) {
                 next()
             } else {
-                res.error(
+                res.status(500).send(
                     `Sorry, you are not a ${role}. You dont have permission to access this.`
                 )
             }
         } catch (err) {
-            res.error(err)
+            res.status(500).send(err)
         }
         if (err) {
-            res.error(err)
+            res.status(500).send(err)
         }
     })
 }
