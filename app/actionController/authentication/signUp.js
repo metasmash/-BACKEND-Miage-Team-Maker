@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
         db.user
             .create({
                 ...userForm,
+                email: _.toLower(userForm.email),
                 lowerUsername: _.toLower(username),
             })
             .then(() => {
