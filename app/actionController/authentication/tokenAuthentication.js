@@ -9,6 +9,8 @@ module.exports = async (req, res) => {
         console.log(decoded)
         res.json({ decoded })
         if (err) {
+            console.log(err)
+            res.error(err)
             /*
               err = {
                 name: 'TokenExpiredError',
