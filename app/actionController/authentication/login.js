@@ -11,9 +11,30 @@ module.exports = async (req, res) => {
             const { token, role } = await db.user.findOne({ username })
 
             if (!!token) {
-                res.json({
-                    message: `Hello, ${username}, you are logged in!`,
-                    token,
+                await jwt.verify(token, 'shhhhh', async (err, decoded) => {
+                    if (decoded) {
+                        res.json({
+                            message: `Hello, ${username}, you are logged in!`,
+                            token,
+                        })
+                    }
+                    if (err) {
+                        const token = await jwt.sign(
+                            {
+                                role,
+                            },
+                            'shhhhh',
+                            { expiresIn: '7d' }
+                        )
+
+                        console.log(token)
+                        await db.user.updateOne({ username }, { token })
+
+                        res.json({
+                            message: `Hello, ${username}, you are logged in!`,
+                            token,
+                        })
+                    }
                 })
             } else {
                 const token = await jwt.sign(
