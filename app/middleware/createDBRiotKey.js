@@ -17,6 +17,6 @@ module.exports = async (req, res, next) => {
 
         console.log('DB APIKEY created successfully!')
 
-        res.send({ Message: 'Table created successfully', exit: 0 })
+        res.send({ message: 'Table created successfully', exit: 0 })
     }
 }

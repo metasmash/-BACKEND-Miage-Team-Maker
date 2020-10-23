@@ -6,5 +6,5 @@ module.exports = async (req, res) => {
     console.log(`${key} updated on TABLE ServerConfig.`)
 
     await db.serverConfig.updateOne({ type: 'APIKEY' }, { riotKey: key })
-    res.json({ Message: 'Table updated', exit: 0 })
+    res.json({ message: 'Table updated', exit: 0 })
 }

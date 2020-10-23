@@ -21,5 +21,5 @@ module.exports = async (req, res) => {
             .catch(() => console.log('we cant create your profile bitch'))
     })
 
-    res.send({ Message: `User ${req.body.username} created!`, exit: 0 })
+    res.send({ message: `User ${req.body.username} created!`, exit: 0 })
 }
