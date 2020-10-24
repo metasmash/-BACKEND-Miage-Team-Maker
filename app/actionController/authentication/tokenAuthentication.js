@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
 
     await jwt.verify(token, 'shhhhh', async (err, decoded) => {
         console.log(decoded)
-        res.json({ decoded })
+        res.json({ ...user })
         if (err) {
             console.log(err)
             res.status(500).send('wrong token authentification.')
