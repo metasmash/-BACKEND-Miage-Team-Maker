@@ -6,4 +6,5 @@ module.exports = {
     SIGNUP: require('./authentication/signUp'),
     LOGIN: require('./authentication/login'),
     TOKEN_AUTH: require('./authentication/tokenAuthentication'),
+    LOGOUT: require('./authentication/logout'),
 }

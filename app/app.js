@@ -12,6 +12,8 @@ app.use(
 )
 //app.use(ROUTES.ROLE.ADMIN, MIDDLEWARE.CHECK_ROLE, MIDDLEWARE.ROLE.IS_ADMIN)
 
+app.post(ROUTES.LOGOUT, CONTROLLER.LOGOUT)
+
 app.get(ROUTES.ROOT, async (req, res) => {
     res.json(ROUTES)
 })

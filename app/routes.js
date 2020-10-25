@@ -12,5 +12,6 @@ module.exports = {
     SIGNUP: '/signup',
     LOGIN: '/login',
     LOGIN_TOKEN: '/login/:token',
+    LOGOUT: '/logout/:token',
     ROLE,
 }
