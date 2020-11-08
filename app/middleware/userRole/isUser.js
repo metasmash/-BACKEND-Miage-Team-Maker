@@ -3,11 +3,11 @@ const db = require('../../schema/models')
 module.exports = async (req, res, next) => {
     const { token } = req.body
 
-    const { expectedRole } = await db.user.findOne({ token })
+    const role = db.user.findOne({ token }).then((user) => user.role)
 
-    if (expectedRole === 'Admin' || 'Moderator' || 'User') {
+    if (role === 'Admin' || 'Moderator' || 'User') {
         next()
     } else {
-        throw Error(`Sorry, you're not admin`)
+        res.status(401).send('sorry, you are Banned from the service.')
     }
 }

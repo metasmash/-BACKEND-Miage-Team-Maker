@@ -10,4 +10,5 @@ module.exports = {
         IS_MODERATOR: require('./userRole/isModerator'),
         IS_ADMIN: require('./userRole/isAdmin'),
     },
+    CHECK_TOKEN_EXISTS: require('./checkTokenExists'),
 }

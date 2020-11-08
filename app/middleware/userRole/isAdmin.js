@@ -8,6 +8,6 @@ module.exports = async (req, res, next) => {
     if (expectedRole === 'Admin') {
         next()
     } else {
-        throw Error(`Sorry, you're not admin`)
+        res.status(401).send('sorry, you are not Admin.')
     }
 }

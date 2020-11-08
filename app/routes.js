@@ -1,7 +1,7 @@
 const ROLE = {
-    USER: '/user',
-    MODERATOR: '/moderator',
-    ADMIN: '/admin',
+    USER: '/user/:token',
+    MODERATOR: '/moderator/:token',
+    ADMIN: '/admin/:token',
 }
 
 module.exports = {
