@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
 
     if (userExists) {
         console.log('Email already exists')
-        res.json({ Error: 400, message: 'Email already exists!' })
+        res.status(403).json({ message: 'Email already exists!' })
     } else {
         next()
     }

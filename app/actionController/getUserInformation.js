@@ -6,10 +6,8 @@ module.exports = async (req, res) => {
         const username = req.params.username
         const id = await RIOT.getSummonerSecretId(username)
         response.information = await RIOT.getSummonerRanking(id)
+        res.json(response.information)
     } catch (e) {
-        response.information = { error: true }
-        console.log('Error: invalid summoner name.')
+        res.status(404)
     }
-
-    res.json(response.information)
 }

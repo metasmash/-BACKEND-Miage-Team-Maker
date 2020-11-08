@@ -59,7 +59,9 @@ module.exports = async (req, res) => {
                 })
             }
         } else {
-            res.json({ message: 'User does not exists or password is wrong.' })
+            res.status(401).json({
+                message: 'User does not exists or password is wrong.',
+            })
         }
     })
 }

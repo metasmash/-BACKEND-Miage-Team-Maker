@@ -7,11 +7,12 @@ module.exports = async (req, res) => {
     console.log(user)
 
     await jwt.verify(token, 'shhhhh', async (err, decoded) => {
-        console.log(decoded)
-        res.json(user)
+        if (decoded) {
+            res.json(user)
+        }
         if (err) {
             console.log(err)
-            res.status(500).send('wrong token authentification.')
+            res.status(401).send('wrong token authentification.')
             /*
               err = {
                 name: 'TokenExpiredError',
